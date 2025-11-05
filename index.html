@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ادبیات فارسی</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico?version=1" type="image/x-icon">
+    <link rel="search" type="application/opensearchdescription+xml" title="ادبیات فارسی" href="https://ganjoor.net/search.xml">
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/js/chart.js"></script>
+    <script src="/js/bk.js?version=79"></script>
+    <script src="/js/jquery.mark.min.js"></script>
+    <style type="text/css">
+        :root {
+            --primary-color: #8b4513;
+            --secondary-color: #2c3e50;
+            --light-color: #f9f5f0;
+            --white-color: #ffffff;
+            --text-color: #333;
+            --font-family: 'Vazirmatn', sans-serif;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo svg {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-right: 25px;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .content-page {
+            display: none;
+        }
+        
+        .content-page.active {
+            display: block;
+        }
+        
+        .home-hero {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 40px;
+        }
+        
+        .home-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .home-hero p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .hero-image {
+            max-width: 800px;
+            margin: 30px auto;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .century-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0;
+        }
+        
+        .century-button {
+            background-color: var(--white-color);
+            color: var(--secondary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-family: var(--font-family);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .century-button:hover, .century-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .century-section {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .century-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        
+        .poets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        
+        .poet-card {
+            background-color: #f9f9f9;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .poet-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .poet-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        
+        .poet-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        .popular-poets {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        
+        .popular-poets h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .virtual-tours-section {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .virtual-tours-intro {
+            margin-bottom: 30px;
+        }
+        
+        .virtual-tours-intro h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .virtual-tours-intro p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .tour-card {
+            background-color: #f9f9f9;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .tour-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .tour-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .tour-card:hover .tour-image {
+            transform: scale(1.05);
+        }
+        
+        .tour-content {
+            padding: 20px;
+        }
+        
+        .tour-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .tour-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .tour-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-family: var(--font-family);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tour-button:hover {
+            background-color: #6d3410;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+        }
+        
+        .tour-button svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .featured-tour {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        
+        .featured-tour h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .featured-tour-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .featured-tour-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .tour-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tour-control-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-family: var(--font-family);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tour-control-btn:hover {
+            background-color: #6d3410;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+        }
+        
+        .tour-control-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .fullscreen-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(139, 69, 19, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10;
+        }
+        
+        .fullscreen-btn:hover {
+            background-color: rgba(109, 52, 16, 0.9);
+            transform: scale(1.1);
+        }
+        
+        .fullscreen-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .fullscreen-iframe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            border: none;
+        }
+        
+        .fullscreen-exit-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(139, 69, 19, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 10000;
+        }
+        
+        .fullscreen-exit-btn:hover {
+            background-color: rgba(109, 52, 16, 0.9);
+            transform: scale(1.1);
+        }
+        
+        .fullscreen-exit-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #777;
+            font-size: 0.9rem;
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            margin-top: 40px;
+        }
+        
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white-color);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                border-radius: var(--border-radius);
+                z-index: 100;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .home-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .virtual-tours-section, .featured-tour, .century-section {
+                padding: 25px;
+            }
+            
+            .tours-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .featured-tour-container, .iframe-container {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .home-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .virtual-tours-section, .featured-tour, .century-section {
+                padding: 20px;
+            }
+            
+            .poets-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .tours-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-tour-container, .iframe-container {
+                height: 250px;
+            }
+            
+            .tour-control-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .tour-control-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .fullscreen-btn {
+                width: 35px;
+                height: 35px;
+                top: 10px;
+                right: 10px;
+            }
+            
+            .fullscreen-btn svg {
+                width: 18px;
+                height: 18px;
+            }
+            
+            .fullscreen-exit-btn {
+                width: 40px;
+                height: 40px;
+                top: 10px;
+                right: 10px;
+            }
+            
+            .fullscreen-exit-btn svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    </style>
+    <script>
+        var cookieValue = getCookie("playerScrollLock");
+        var playerScrollLock = cookieValue === "true";
+
+        cookieValue = getCookie("stickyEnabled");
+        var stickyEnabled = cookieValue != "false";
+
+        cookieValue = getCookie("lineNumbers");
+        var lineNumbers = cookieValue != "false";
+    </script>
+    <meta name="description" content="جستجو در شعر فارسی">
+</head>
+<body>
+    <div class="container">
+        <header class="navigation">
+            <a href="/" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#8b4513"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+                ادبیات فارسی
+            </a>
+            <button class="mobile-menu-toggle">☰</button>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" data-page="home">خانه</a></li>
+            <!--    <li><a href="#" class="nav-link" data-page="poets">شاعران</a></li> -->
+                <li><a href="#" class="nav-link" data-page="about">درباره ما</a></li>
+            </ul>
+        </header>
+
+        <div id="home-page" class="content-page active">
+            <div class="home-hero">
+                <h1>به دنیای شعر و ادبیات فارسی خوش آمدید</h1>
+                <p>در این وب‌سایت می‌توانید به مجموعه‌ای غنی از اشعار فارسی از شاعران بزرگ ایران دسترسی داشته باشید و از تورهای مجازی اماکن ادبی لذت ببرید.</p>
+            </div>
+            
+            <div class="hero-image">
+                <img src="https://plus.parsine.com/wp-content/uploads/2024/12/Iranian-poets-780x470.jpg" alt="ادبیات فارسی">
+            </div>
+            
+            <div class="popular-poets">
+                <h2>شاعران برجسته</h2>
+                <div class="poets-grid">
+                    <a href="hafez" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/hafez.gif" alt="حافظ" class="poet-image">
+                        <div class="poet-name">حافظ</div>
+                    </a>
+                    <a href="saadi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/saadi.gif" alt="سعدی" class="poet-image">
+                        <div class="poet-name">سعدی</div>
+                    </a>
+                    <a href="moulavi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/moulavi.gif" alt="مولانا" class="poet-image">
+                        <div class="poet-name">مولانا</div>
+                    </a>
+                    <a href="ferdousi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ferdousi.gif" alt="فردوسی" class="poet-image">
+                        <div class="poet-name">فردوسی</div>
+                    </a>
+                    <a href="khayyam" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/khayyam.gif" alt="خیام" class="poet-image">
+                        <div class="poet-name">خیام</div>
+                    </a>
+                    <a href="nezami" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/nezami.gif" alt="نظامی" class="poet-image">
+                        <div class="poet-name">نظامی</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="tours-page" class="content-page">
+            <div class="breadcrumb">
+                <a href="#" data-page="home">خانه</a> &gt; تورهای مجازی
+            </div>
+            
+            <div class="virtual-tours-section">
+                <div class="virtual-tours-intro">
+                    <h2>تورهای مجازی میراث ادبیات فارسی</h2>
+                    <p>با تورهای مجازی ما، به سفری جذاب در اماکن تاریخی و فرهنگی مرتبط با ادبیات فارسی بروید. از آرامگاه شاعران بزرگ گرفته تا کتابخانه‌های تاریخی و موزه‌های ادبی، همه را از نزدیک ببینید.</p>
+                </div>
+                
+                <div class="featured-tour">
+                    <h2>تور مجازی ویژه: آرامگاه حافظ</h2>
+                    <div class="iframe-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!4v1689912345678!6m8!1m7!1sCAoSK0FGMVFpcE44aXp5b0JlZ1l5b0J5b0J5b0J5b0J5!2m2!1d35.6961!2d51.4231!3f0!4f0!5f0.7820865974627469!7i16384!8i8192" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <button class="fullscreen-btn" onclick="toggleFullscreen()">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                        </button>
+                    </div>
+                    <div class="tour-controls">
+                        <button class="tour-control-btn" onclick="startTour()">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 5v14l11-7z"/></svg>
+                            شروع تور
+                        </button>
+                        <button class="tour-control-btn" onclick="pauseTour()">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            توقف
+                        </button>
+                        <button class="tour-control-btn" onclick="resetTour()">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35C15.77 4.59 13.99 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6z"/></svg>
+                            بازنشانی
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="tours-grid">
+                    <div class="tour-card">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="آرامگاه سعدی" class="tour-image">
+                        <div class="tour-content">
+                            <h3 class="tour-title">آرامگاه سعدی شیرازی</h3>
+                            <p class="tour-description">به آرامگاه شیخ اجل، سعدی شیرازی سر بزنید و با فضای معنوی این مکان مقدس آشنا شوید.</p>
+                            <button class="tour-button" onclick="openTour('saadi')">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                شروع تور
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="tour-card">
+                        <img src="https://images.unsplash.com/photo-1548919973-5cef591cdbc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="خانه فردوسی" class="tour-image">
+                        <div class="tour-content">
+                            <h3 class="tour-title">خانه فردوسی در طوس</h3>
+                            <p class="tour-description">سفری مجازی به خانه ابوالقاسم فردوسی، حماسه‌سرای بزرگ ایران و آفریننده شاهنامه.</p>
+                            <button class="tour-button" onclick="openTour('ferdousi')">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                شروع تور
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="tour-card">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="ارگ مولانا" class="tour-image">
+                        <div class="tour-content">
+                            <h3 class="tour-title">ارگ مولانا در قونیه</h3>
+                            <p class="tour-description">از زیبایی‌های ارگ مولانا جلال‌الدین محمد بلخی در شهر قونیه ترکیه لذت ببرید.</p>
+                            <button class="tour-button" onclick="openTour('moulavi')">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                شروع تور
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="tour-card">
+                        <img src="https://images.unsplash.com/photo-1580924932324-cea2e8c1b5f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="مسجد جامع اصفهان" class="tour-image">
+                        <div class="tour-content">
+                            <h3 class="tour-title">مسجد جامع اصفهان</h3>
+                            <p class="tour-description">با معماری باشکوه مسجد جامع اصفهان و نقوش ادبی آن آشنا شوید.</p>
+                            <button class="tour-button" onclick="openTour('esfahan')">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                شروع تور
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="tour-card">
+                        <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="باغ ارم شیراز" class="tour-image">
+                        <div class="tour-content">
+                            <h3 class="tour-title">باغ ارم شیراز</h3>
+                            <p class="tour-description">از باغ تاریخی ارم شیراز، محل الهام بسیاری از شاعران بزرگ، دیدن کنید.</p>
+                            <button class="tour-button" onclick="openTour('eram')">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                شروع تور
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="tour-card">
+                        <img src="https://images.unsplash.com/photo-1566472261243-7d051476bfac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="کاخ گلستان تهران" class="tour-image">
+                        <div class="tour-content">
+                            <h3 class="tour-title">کاخ گلستان تهران</h3>
+                            <p class="tour-description">با تاریخچه ادبی کاخ گلستان و مکان‌های مرتبط با شاعران دربار قاجار آشنا شوید.</p>
+                            <button class="tour-button" onclick="openTour('golestan')">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                شروع تور
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="poets-page" class="content-page">
+            <div class="breadcrumb">
+                <a href="#" data-page="home">خانه</a> &gt; شاعران
+            </div>
+            
+            <div class="century-nav">
+                <button class="century-button active" data-century="all">همه</button>
+                <button class="century-button" data-century="3">قرن سوم</button>
+                <button class="century-button" data-century="4">قرن چهارم</button>
+                <button class="century-button" data-century="5">قرن پنجم</button>
+                <button class="century-button" data-century="6">قرن ششم</button>
+                <button class="century-button" data-century="7">قرن هفتم</button>
+                <button class="century-button" data-century="8">قرن هشتم</button>
+                <button class="century-button" data-century="9">قرن نهم</button>
+                <button class="century-button" data-century="10">قرن دهم</button>
+                <button class="century-button" data-century="11">قرن یازدهم</button>
+                <button class="century-button" data-century="12">قرن دوازدهم</button>
+                <button class="century-button" data-century="13">قرن سیزدهم</button>
+                <button class="century-button" data-century="14">قرن چهاردهم</button>
+            </div>
+            
+            <div class="century-section" data-century="3">
+                <h2 class="century-title">قرن سوم</h2>
+                <div class="poets-grid">
+                    <a href="/soghdi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/soghdi.gif" alt="ابوحفص سغدی" class="poet-image">
+                        <div class="poet-name">ابوحفص سغدی</div>
+                    </a>
+                    <a href="/gorgani" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/gorgani.gif" alt="ابوسلیک گرگانی" class="poet-image">
+                        <div class="poet-name">ابوسلیک گرگانی</div>
+                    </a>
+                    <a href="/bassam" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/bassam.gif" alt="بسام کرد" class="poet-image">
+                        <div class="poet-name">بسام کرد</div>
+                    </a>
+                    <a href="/hanzale" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/hanzale.gif" alt="حنظلهٔ بادغیسی" class="poet-image">
+                        <div class="poet-name">حنظلهٔ بادغیسی</div>
+                    </a>
+                    <a href="/roodaki" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/roodaki.gif" alt="رودکی" class="poet-image">
+                        <div class="poet-name">رودکی</div>
+                    </a>
+                    <a href="/firooz" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/firooz.gif" alt="فیروز مشرقی" class="poet-image">
+                        <div class="poet-name">فیروز مشرقی</div>
+                    </a>
+                    <a href="/mokhallad" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/mokhallad.gif" alt="محمد بن مخلد سگزی" class="poet-image">
+                        <div class="poet-name">محمد بن مخلد سگزی</div>
+                    </a>
+                    <a href="/vasif" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/vasif.gif" alt="محمد وصیف سگزی" class="poet-image">
+                        <div class="poet-name">محمد وصیف سگزی</div>
+                    </a>
+                    <a href="/varragh" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/varragh.gif" alt="محمود وراق هروی" class="poet-image">
+                        <div class="poet-name">محمود وراق هروی</div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="century-section" data-century="4">
+                <h2 class="century-title">قرن چهارم</h2>
+                <div class="poets-grid">
+                    <a href="/abueshagh" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/abueshagh.gif" alt="ابواسحاق جویباری" class="poet-image">
+                        <div class="poet-name">ابواسحاق جویباری</div>
+                    </a>
+                    <a href="/abolhoseyn" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/abolhoseyn.gif" alt="ابوالحسین خارجی" class="poet-image">
+                        <div class="poet-name">ابوالحسین خارجی</div>
+                    </a>
+                    <a href="/abolala" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/abolala.gif" alt="ابوالعلاء شوشتری" class="poet-image">
+                        <div class="poet-name">ابوالعلاء شوشتری</div>
+                    </a>
+                    <a href="/abolmoayyed" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/abolmoayyed.gif" alt="ابوالمؤید بلخی" class="poet-image">
+                        <div class="poet-name">ابوالمؤید بلخی</div>
+                    </a>
+                    <a href="/bolmasal" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/bolmasal.gif" alt="ابوالمثل بخارایی" class="poet-image">
+                        <div class="poet-name">ابوالمثل بخارایی</div>
+                    </a>
+                    <a href="/abusaeed" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/abusaeed.gif" alt="ابوسعید ابوالخیر" class="poet-image">
+                        <div class="poet-name">ابوسعید ابوالخیر</div>
+                    </a>
+                    <a href="/mosabi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/mosabi.gif" alt="ابوطیب مصعبی" class="poet-image">
+                        <div class="poet-name">ابوطیب مصعبی</div>
+                    </a>
+                    <a href="/barmaki" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/barmaki.gif" alt="احمد برمکی" class="poet-image">
+                        <div class="poet-name">احمد برمکی</div>
+                    </a>
+                    <a href="/balami" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/balami.gif" alt="بلعمی" class="poet-image">
+                        <div class="poet-name">بلعمی</div>
+                    </a>
+                    <a href="/kashi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/kashi.gif" alt="ترکی کشی" class="poet-image">
+                        <div class="poet-name">ترکی کشی</div>
+                    </a>
+                    <a href="/jollab" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/jollab.gif" alt="جلاب بخارایی" class="poet-image">
+                        <div class="poet-name">جلاب بخارایی</div>
+                    </a>
+                    <a href="/daghighi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/daghighi.gif" alt="دقیقی" class="poet-image">
+                        <div class="poet-name">دقیقی</div>
+                    </a>
+                    <a href="/rownaghi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/rownaghi.gif" alt="رونقی بخارایی" class="poet-image">
+                        <div class="poet-name">رونقی بخارایی</div>
+                    </a>
+                    <a href="/sepehri" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/sepehri.gif" alt="سپهری بخارایی" class="poet-image">
+                        <div class="poet-name">سپهری بخارایی</div>
+                    </a>
+                    <a href="/shaker" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/shaker.gif" alt="شاکر بخارایی" class="poet-image">
+                        <div class="poet-name">شاکر بخارایی</div>
+                    </a>
+                    <a href="/shahid" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/shahid.gif" alt="شهید بلخی" class="poet-image">
+                        <div class="poet-name">شهید بلخی</div>
+                    </a>
+                    <a href="/sane" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/sane.gif" alt="صانع بلخی" class="poet-image">
+                        <div class="poet-name">صانع بلخی</div>
+                    </a>
+                    <a href="/tokhari" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/tokhari.gif" alt="طخاری" class="poet-image">
+                        <div class="poet-name">طخاری</div>
+                    </a>
+                    <a href="/onsori" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/onsori.gif" alt="عنصری" class="poet-image">
+                        <div class="poet-name">عنصری</div>
+                    </a>
+                    <a href="/ayyooghi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ayyooghi.gif" alt="عیوقی" class="poet-image">
+                        <div class="poet-name">عیوقی</div>
+                    </a>
+                    <a href="/faralavi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/faralavi.gif" alt="فرالاوی" class="poet-image">
+                        <div class="poet-name">فرالاوی</div>
+                    </a>
+                    <a href="/ferdousi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ferdousi.gif" alt="فردوسی" class="poet-image">
+                        <div class="poet-name">فردوسی</div>
+                    </a>
+                    <a href="/kesayee" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/kesayee.gif" alt="کسایی" class="poet-image">
+                        <div class="poet-name">کسایی</div>
+                    </a>
+                    <a href="/moradi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/moradi.gif" alt="مرادی" class="poet-image">
+                        <div class="poet-name">مرادی</div>
+                    </a>
+                    <a href="/masoudi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/masoudi.gif" alt="مسعودی مروزی" class="poet-image">
+                        <div class="poet-name">مسعودی مروزی</div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="century-section" data-century="5">
+                <h2 class="century-title">قرن پنجم</h2>
+                <div class="poets-grid">
+                    <a href="/rooni" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/rooni.gif" alt="ابوالفرج رونی" class="poet-image">
+                        <div class="poet-name">ابوالفرج رونی</div>
+                    </a>
+                    <a href="/beyhaghi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/beyhaghi.gif" alt="ابوالفضل بیهقی" class="poet-image">
+                        <div class="poet-name">ابوالفضل بیهقی</div>
+                    </a>
+                    <a href="/osmani" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/osmani.gif" alt="ابوعلی عثمانی" class="poet-image">
+                        <div class="poet-name">ابوعلی عثمانی</div>
+                    </a>
+                    <a href="/azraghi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/azraghi.gif" alt="ازرقی هروی" class="poet-image">
+                        <div class="poet-name">ازرقی هروی</div>
+                    </a>
+                    <a href="/asadi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/asadi.gif" alt="اسدی توسی" class="poet-image">
+                        <div class="poet-name">اسدی توسی</div>
+                    </a>
+                    <a href="/amir" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/amir.gif" alt="امیر معزی" class="poet-image">
+                        <div class="poet-name">امیر معزی</div>
+                    </a>
+                    <a href="/iranshan" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/iranshan.gif" alt="ایرانشان" class="poet-image">
+                        <div class="poet-name">ایرانشان</div>
+                    </a>
+                    <a href="/babataher" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/babataher.gif" alt="باباطاهر" class="poet-image">
+                        <div class="poet-name">باباطاهر</div>
+                    </a>
+                    <a href="/abdullah" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/abdullah.gif" alt="خواجه عبدالله انصاری" class="poet-image">
+                        <div class="poet-name">خواجه عبدالله انصاری</div>
+                    </a>
+                    <a href="/khayyam" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/khayyam.gif" alt="خیام" class="poet-image">
+                        <div class="poet-name">خیام</div>
+                    </a>
+                    <a href="/nashenas" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/nashenas.gif" alt="سرایندهٔ فرامرزنامه" class="poet-image">
+                        <div class="poet-name">سرایندهٔ فرامرزنامه</div>
+                    </a>
+                    <a href="/sanaee" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/sanaee.gif" alt="سنایی" class="poet-image">
+                        <div class="poet-name">سنایی</div>
+                    </a>
+                    <a href="/asjadi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/asjadi.gif" alt="عسجدی" class="poet-image">
+                        <div class="poet-name">عسجدی</div>
+                    </a>
+                    <a href="/amagh" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/amagh.gif" alt="عمعق بخاری" class="poet-image">
+                        <div class="poet-name">عمعق بخاری</div>
+                    </a>
+                    <a href="/keikavus" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/keikavus.gif" alt="عنصرالمعالی" class="poet-image">
+                        <div class="poet-name">عنصرالمعالی</div>
+                    </a>
+                    <a href="/ghazzali" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ghazzali.gif" alt="غزالی" class="poet-image">
+                        <div class="poet-name">غزالی</div>
+                    </a>
+                    <a href="/asad" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/asad.gif" alt="فخرالدین اسعد گرگانی" class="poet-image">
+                        <div class="poet-name">فخرالدین اسعد گرگانی</div>
+                    </a>
+                    <a href="/farrokhi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/farrokhi.gif" alt="فرخی سیستانی" class="poet-image">
+                        <div class="poet-name">فرخی سیستانی</div>
+                    </a>
+                    <a href="/ghatran" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ghatran.gif" alt="قطران تبریزی" class="poet-image">
+                        <div class="poet-name">قطران تبریزی</div>
+                    </a>
+                    <a href="/labibi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/labibi.gif" alt="لبیبی" class="poet-image">
+                        <div class="poet-name">لبیبی</div>
+                    </a>
+                    <a href="/masood" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/masood.gif" alt="مسعود سعد سلمان" class="poet-image">
+                        <div class="poet-name">مسعود سعد سلمان</div>
+                    </a>
+                    <a href="/manoochehri" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/manoochehri.gif" alt="منوچهری" class="poet-image">
+                        <div class="poet-name">منوچهری</div>
+                    </a>
+                    <a href="/naserkhosro" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/naserkhosro.gif" alt="ناصرخسرو" class="poet-image">
+                        <div class="poet-name">ناصرخسرو</div>
+                    </a>
+                    <a href="/hojviri" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/hojviri.gif" alt="هجویری" class="poet-image">
+                        <div class="poet-name">هجویری</div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="century-section" data-century="6">
+                <h2 class="century-title">قرن ششم</h2>
+                <div class="poets-grid">
+                    <a href="/akhsikati" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/akhsikati.gif" alt="اثیر اخسیکتی" class="poet-image">
+                        <div class="poet-name">اثیر اخسیکتی</div>
+                    </a>
+                    <a href="/saber" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/saber.gif" alt="ادیب صابر" class="poet-image">
+                        <div class="poet-name">ادیب صابر</div>
+                    </a>
+                    <a href="/anvari" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/anvari.gif" alt="انوری" class="poet-image">
+                        <div class="poet-name">انوری</div>
+                    </a>
+                    <a href="/ouhad" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ouhad.gif" alt="اوحدالدین کرمانی" class="poet-image">
+                        <div class="poet-name">اوحدالدین کرمانی</div>
+                    </a>
+                    <a href="/babaafzal" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/babaafzal.gif" alt="باباافضل کاشانی" class="poet-image">
+                        <div class="poet-name">باباافضل کاشانی</div>
+                    </a>
+                    <a href="/baha" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/baha.gif" alt="بهاء ولد" class="poet-image">
+                        <div class="poet-name">بهاء ولد</div>
+                    </a>
+                    <a href="/jamal" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/jamal.gif" alt="جمال&#x200C;الدین عبدالرزاق" class="poet-image">
+                        <div class="poet-name">جمال&#x200C;الدین عبدالرزاق</div>
+                    </a>
+                    <a href="/hamid" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/hamid.gif" alt="حمیدالدین بلخی" class="poet-image">
+                        <div class="poet-name">حمیدالدین بلخی</div>
+                    </a>
+                    <a href="/khaghani" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/khaghani.gif" alt="خاقانی" class="poet-image">
+                        <div class="poet-name">خاقانی</div>
+                    </a>
+                    <a href="/ghomri" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ghomri.gif" alt="سراج قمری" class="poet-image">
+                        <div class="poet-name">سراج قمری</div>
+                    </a>
+                    <a href="/soozani" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/soozani.gif" alt="سوزنی سمرقندی" class="poet-image">
+                        <div class="poet-name">سوزنی سمرقندی</div>
+                    </a>
+                    <a href="/hasan" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/hasan.gif" alt="سید حسن غزنوی" class="poet-image">
+                        <div class="poet-name">سید حسن غزنوی</div>
+                    </a>
+                    <a href="/zahir" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/zahir.gif" alt="ظهیر فاریابی" class="poet-image">
+                        <div class="poet-name">ظهیر فاریابی</div>
+                    </a>
+                    <a href="/zahiri" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/zahiri.gif" alt="ظهیری سمرقندی" class="poet-image">
+                        <div class="poet-name">ظهیری سمرقندی</div>
+                    </a>
+                    <a href="/abbadi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/abbadi.gif" alt="عبادی مروزی" class="poet-image">
+                        <div class="poet-name">عبادی مروزی</div>
+                    </a>
+                    <a href="/gilani" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/gilani.gif" alt="عبدالقادر گیلانی" class="poet-image">
+                        <div class="poet-name">عبدالقادر گیلانی</div>
+                    </a>
+                    <a href="/jabali" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/jabali.gif" alt="عبدالواسع جبلی" class="poet-image">
+                        <div class="poet-name">عبدالواسع جبلی</div>
+                    </a>
+                    <a href="/mokhtari" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/mokhtari.gif" alt="عثمان مختاری" class="poet-image">
+                        <div class="poet-name">عثمان مختاری</div>
+                    </a>
+                    <a href="/attar" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/attar.gif" alt="عطار" class="poet-image">
+                        <div class="poet-name">عطار</div>
+                    </a>
+                    <a href="/eynolghozat" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/eynolghozat.gif" alt="عین&#x200C;القضات همدانی" class="poet-image">
+                        <div class="poet-name">عین&#x200C;القضات همدانی</div>
+                    </a>
+                    <a href="/falaki" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/falaki.gif" alt="فلکی شروانی" class="poet-image">
+                        <div class="poet-name">فلکی شروانی</div>
+                    </a>
+                    <a href="/ghavami" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ghavami.gif" alt="قوامی رازی" class="poet-image">
+                        <div class="poet-name">قوامی رازی</div>
+                    </a>
+                    <a href="/beylaghani" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/beylaghani.gif" alt="مجیرالدین بیلقانی" class="poet-image">
+                        <div class="poet-name">مجیرالدین بیلقانی</div>
+                    </a>
+                    <a href="/mmon" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/mmon.gif" alt="محمد بن منور" class="poet-image">
+                        <div class="poet-name">محمد بن منور</div>
+                    </a>
+                    <a href="/mahsati" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/mahsati.gif" alt="مهستی گنجوی" class="poet-image">
+                        <div class="poet-name">مهستی گنجوی</div>
+                    </a>
+                    <a href="/meybodi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/meybodi.gif" alt="میبدی" class="poet-image">
+                        <div class="poet-name">میبدی</div>
+                    </a>
+                    <a href="/monshi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/monshi.gif" alt="نصرالله منشی" class="poet-image">
+                        <div class="poet-name">نصرالله منشی</div>
+                    </a>
+                    <a href="/nezami" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/nezami.gif" alt="نظامی" class="poet-image">
+                        <div class="poet-name">نظامی</div>
+                    </a>
+                    <a href="/aroozi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/aroozi.gif" alt="نظامی عروضی" class="poet-image">
+                        <div class="poet-name">نظامی عروضی</div>
+                    </a>
+                    <a href="/vatvat" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/vatvat.gif" alt="وطواط" class="poet-image">
+                        <div class="poet-name">وطواط</div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="century-section" data-century="7">
+                <h2 class="century-title">قرن هفتم</h2>
+                <div class="poets-grid">
+                    <a href="/emami" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/emami.gif" alt="امامی هروی" class="poet-image">
+                        <div class="poet-name">امامی هروی</div>
+                    </a>
+                    <a href="/hoseyni" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/hoseyni.gif" alt="امیر حسینی هروی" class="poet-image">
+                        <div class="poet-name">امیر حسینی هروی</div>
+                    </a>
+                    <a href="/khosro" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/khosro.gif" alt="امیرخسرو دهلوی" class="poet-image">
+                        <div class="poet-name">امیرخسرو دهلوی</div>
+                    </a>
+                    <a href="/nezari" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/nezari.gif" alt="حکیم نزاری" class="poet-image">
+                        <div class="poet-name">حکیم نزاری</div>
+                    </a>
+                    <a href="/khajenasir" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/khajenasir.gif" alt="خواجه نصیرالدین طوسی" class="poet-image">
+                        <div class="poet-name">خواجه نصیرالدین طوسی</div>
+                    </a>
+                    <a href="/varavini" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/varavini.gif" alt="سعدالدین وراوینی" class="poet-image">
+                        <div class="poet-name">سعدالدین وراوینی</div>
+                    </a>
+                    <a href="/saadi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/saadi.gif" alt="سعدی" class="poet-image">
+                        <div class="poet-name">سعدی</div>
+                    </a>
+                    <a href="/valad" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/valad.gif" alt="سلطان ولد" class="poet-image">
+                        <div class="poet-name">سلطان ولد</div>
+                    </a>
+                    <a href="/eraghi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/eraghi.gif" alt="عراقی" class="poet-image">
+                        <div class="poet-name">عراقی</div>
+                    </a>
+                    <a href="/kamal" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/kamal.gif" alt="کمال&#x200C;الدین اسماعیل" class="poet-image">
+                        <div class="poet-name">کمال&#x200C;الدین اسماعیل</div>
+                    </a>
+                    <a href="/hamgar" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/hamgar.gif" alt="مجد همگر" class="poet-image">
+                        <div class="poet-name">مجد همگر</div>
+                    </a>
+                    <a href="/moulavi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/moulavi.gif" alt="مولانا" class="poet-image">
+                        <div class="poet-name">مولانا</div>
+                    </a>
+                    <a href="/daye" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/daye.gif" alt="نجم&#x200C;الدین رازی" class="poet-image">
+                        <div class="poet-name">نجم&#x200C;الدین رازی</div>
+                    </a>
+                    <a href="/homam" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/homam.gif" alt="همام تبریزی" class="poet-image">
+                        <div class="poet-name">همام تبریزی</div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="century-section" data-century="8">
+                <h2 class="century-title">قرن هشتم</h2>
+                <div class="poets-grid">
+                    <a href="/ebneemad" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ebneemad.gif" alt="ابن عماد" class="poet-image">
+                        <div class="poet-name">ابن عماد</div>
+                    </a>
+                    <a href="/ebneyamin" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ebneyamin.gif" alt="ابن یمین" class="poet-image">
+                        <div class="poet-name">ابن یمین</div>
+                    </a>
+                    <a href="/ouhadi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ouhadi.gif" alt="اوحدی" class="poet-image">
+                        <div class="poet-name">اوحدی</div>
+                    </a>
+                    <a href="/jalal" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/jalal.gif" alt="جلال عضد" class="poet-image">
+                        <div class="poet-name">جلال عضد</div>
+                    </a>
+                    <a href="/jahan" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/jahan.gif" alt="جهان ملک خاتون" class="poet-image">
+                        <div class="poet-name">جهان ملک خاتون</div>
+                    </a>
+                    <a href="/hafez" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/hafez.gif" alt="حافظ" class="poet-image">
+                        <div class="poet-name">حافظ</div>
+                    </a>
+                    <a href="/heydar" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/heydar.gif" alt="حیدر شیرازی" class="poet-image">
+                        <div class="poet-name">حیدر شیرازی</div>
+                    </a>
+                    <a href="/khajoo" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/khajoo.gif" alt="خواجوی کرمانی" class="poet-image">
+                        <div class="poet-name">خواجوی کرمانی</div>
+                    </a>
+                    <a href="/salman" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/salman.gif" alt="سلمان ساوجی" class="poet-image">
+                        <div class="poet-name">سلمان ساوجی</div>
+                    </a>
+                    <a href="/seyf" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/seyf.gif" alt="سیف فرغانی" class="poet-image">
+                        <div class="poet-name">سیف فرغانی</div>
+                    </a>
+                    <a href="/shahnematollah" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/shahnematollah.gif" alt="شاه نعمت&#x200C;الله ولی" class="poet-image">
+                        <div class="poet-name">شاه نعمت&#x200C;الله ولی</div>
+                    </a>
+                    <a href="/maghrebi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/maghrebi.gif" alt="شمس مغربی" class="poet-image">
+                        <div class="poet-name">شمس مغربی</div>
+                    </a>
+                    <a href="/shabestari" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/shabestari.gif" alt="شیخ محمود شبستری" class="poet-image">
+                        <div class="poet-name">شیخ محمود شبستری</div>
+                    </a>
+                    <a href="/obeyd" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/obeyd.gif" alt="عبید زاکانی" class="poet-image">
+                        <div class="poet-name">عبید زاکانی</div>
+                    </a>
+                    <a href="/ghasem" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ghasem.gif" alt="قاسم انوار" class="poet-image">
+                        <div class="poet-name">قاسم انوار</div>
+                    </a>
+                    <a href="/khojandi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/khojandi.gif" alt="کمال خجندی" class="poet-image">
+                        <div class="poet-name">کمال خجندی</div>
+                    </a>
+                    <a href="/koosaj" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/koosaj.gif" alt="محمد کوسج" class="poet-image">
+                        <div class="poet-name">محمد کوسج</div>
+                    </a>
+                    <a href="/naser" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/naser.gif" alt="ناصر بخارایی" class="poet-image">
+                        <div class="poet-name">ناصر بخارایی</div>
+                    </a>
+                    <a href="/nasimi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/nasimi.gif" alt="نسیمی" class="poet-image">
+                        <div class="poet-name">نسیمی</div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="century-section" data-century="9">
+                <h2 class="century-title">قرن نهم</h2>
+                <div class="poets-grid">
+                    <a href="/ebnehesam" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ebnehesam.gif" alt="ابن حسام خوسفی" class="poet-image">
+                        <div class="poet-name">ابن حسام خوسفی</div>
+                    </a>
+                    <a href="/asiri" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/asiri.gif" alt="اسیری لاهیجی" class="poet-image">
+                        <div class="poet-name">اسیری لاهیجی</div>
+                    </a>
+                    <a href="/shahi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/shahi.gif" alt="امیر شاهی" class="poet-image">
+                        <div class="poet-name">امیر شاهی</div>
+                    </a>
+                    <a href="/fani" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/fani.gif" alt="امیرعلیشیر نوایی" class="poet-image">
+                        <div class="poet-name">امیرعلیشیر نوایی</div>
+                    </a>
+                    <a href="/jami" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/jami.gif" alt="جامی" class="poet-image">
+                        <div class="poet-name">جامی</div>
+                    </a>
+                    <a href="/hoseyn" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/hoseyn.gif" alt="حسین خوارزمی" class="poet-image">
+                        <div class="poet-name">حسین خوارزمی</div>
+                    </a>
+                    <a href="/khiali" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/khiali.gif" alt="خیالی بخارایی" class="poet-image">
+                        <div class="poet-name">خیالی بخارایی</div>
+                    </a>
+                    <a href="/jarooni" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/jarooni.gif" alt="سلیمی جرونی" class="poet-image">
+                        <div class="poet-name">سلیمی جرونی</div>
+                    </a>
+                    <a href="/soofi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/soofi.gif" alt="صوفی محمد هروی" class="poet-image">
+                        <div class="poet-name">صوفی محمد هروی</div>
+                    </a>
+                    <a href="/koohi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/koohi.gif" alt="کوهی" class="poet-image">
+                        <div class="poet-name">کوهی</div>
+                    </a>
+                    <a href="/ghari" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ghari.gif" alt="نظام قاری" class="poet-image">
+                        <div class="poet-name">نظام قاری</div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="century-section" data-century="10">
+                <h2 class="century-title">قرن دهم</h2>
+                <div class="poets-grid">
+                    <a href="/ahli" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ahli.gif" alt="اهلی شیرازی" class="poet-image">
+                        <div class="poet-name">اهلی شیرازی</div>
+                    </a>
+                    <a href="/faghani" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/faghani.gif" alt="بابافغانی" class="poet-image">
+                        <div class="poet-name">بابافغانی</div>
+                    </a>
+                    <a href="/razi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/razi.gif" alt="رضی&#x200C;الدین آرتیمانی" class="poet-image">
+                        <div class="poet-name">رضی&#x200C;الدین آرتیمانی</div>
+                    </a>
+                    <a href="/sam" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/sam.gif" alt="سام میرزا صفوی" class="poet-image">
+                        <div class="poet-name">سام میرزا صفوی</div>
+                    </a>
+                    <a href="/shahedi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/shahedi.gif" alt="شاهدی" class="poet-image">
+                        <div class="poet-name">شاهدی</div>
+                    </a>
+                    <a href="/bahaee" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/bahaee.gif" alt="شیخ بهایی" class="poet-image">
+                        <div class="poet-name">شیخ بهایی</div>
+                    </a>
+                    <a href="/orfi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/orfi.gif" alt="عرفی" class="poet-image">
+                        <div class="poet-name">عرفی</div>
+                    </a>
+                    <a href="/fozooli" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/fozooli.gif" alt="فضولی" class="poet-image">
+                        <div class="poet-name">فضولی</div>
+                    </a>
+                    <a href="/mohtasham" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/mohtasham.gif" alt="محتشم کاشانی" class="poet-image">
+                        <div class="poet-name">محتشم کاشانی</div>
+                    </a>
+                    <a href="/meyli" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/meyli.gif" alt="میلی" class="poet-image">
+                        <div class="poet-name">میلی</div>
+                    </a>
+                    <a href="/naziri" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/naziri.gif" alt="نظیری نیشابوری" class="poet-image">
+                        <div class="poet-name">نظیری نیشابوری</div>
+                    </a>
+                    <a href="/vahshi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/vahshi.gif" alt="وحشی بافقی" class="poet-image">
+                        <div class="poet-name">وحشی بافقی</div>
+                    </a>
+                    <a href="/helali" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/helali.gif" alt="هلالی جغتایی" class="poet-image">
+                        <div class="poet-name">هلالی جغتایی</div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="century-section" data-century="11">
+                <h2 class="century-title">قرن یازدهم</h2>
+                <div class="poets-grid">
+                    <a href="/abolhasan" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/abolhasan.gif" alt="ابوالحسن فراهانی" class="poet-image">
+                        <div class="poet-name">ابوالحسن فراهانی</div>
+                    </a>
+                    <a href="/shahrestani" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/shahrestani.gif" alt="اسیر شهرستانی" class="poet-image">
+                        <div class="poet-name">اسیر شهرستانی</div>
+                    </a>
+                    <a href="/pazevari" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/pazevari.gif" alt="امیر پازواری" class="poet-image">
+                        <div class="poet-name">امیر پازواری</div>
+                    </a>
+                    <a href="/bidel" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/bidel.gif" alt="بیدل دهلوی" class="poet-image">
+                        <div class="poet-name">بیدل دهلوی</div>
+                    </a>
+                    <a href="/jooya" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/jooya.gif" alt="جویای تبریزی" class="poet-image">
+                        <div class="poet-name">جویای تبریزی</div>
+                    </a>
+                    <a href="/bahoo" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/bahoo.gif" alt="سلطان باهو" class="poet-image">
+                        <div class="poet-name">سلطان باهو</div>
+                    </a>
+                    <a href="/salim" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/salim.gif" alt="سلیم تهرانی" class="poet-image">
+                        <div class="poet-name">سلیم تهرانی</div>
+                    </a>
+                    <a href="/nasafi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/nasafi.gif" alt="سیدای نسفی" class="poet-image">
+                        <div class="poet-name">سیدای نسفی</div>
+                    </a>
+                    <a href="/saeb" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/saeb.gif" alt="صائب" class="poet-image">
+                        <div class="poet-name">صائب</div>
+                    </a>
+                    <a href="/toghra" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/toghra.gif" alt="طغرای مشهدی" class="poet-image">
+                        <div class="poet-name">طغرای مشهدی</div>
+                    </a>
+                    <a href="/ghani" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ghani.gif" alt="غنی کشمیری" class="poet-image">
+                        <div class="poet-name">غنی کشمیری</div>
+                    </a>
+                    <a href="/fasihi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/fasihi.gif" alt="فصیحی هروی" class="poet-image">
+                        <div class="poet-name">فصیحی هروی</div>
+                    </a>
+                    <a href="/fayyaz" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/fayyaz.gif" alt="فیاض لاهیجی" class="poet-image">
+                        <div class="poet-name">فیاض لاهیجی</div>
+                    </a>
+                    <a href="/feyz" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/feyz.gif" alt="فیض کاشانی" class="poet-image">
+                        <div class="poet-name">فیض کاشانی</div>
+                    </a>
+                    <a href="/ghodsi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ghodsi.gif" alt="قدسی مشهدی" class="poet-image">
+                        <div class="poet-name">قدسی مشهدی</div>
+                    </a>
+                    <a href="/kalim" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/kalim.gif" alt="کلیم" class="poet-image">
+                        <div class="poet-name">کلیم</div>
+                    </a>
+                    <a href="/masih" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/masih.gif" alt="ملا مسیح" class="poet-image">
+                        <div class="poet-name">ملا مسیح</div>
+                    </a>
+                    <a href="/mir" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/mir.gif" alt="میرداماد" class="poet-image">
+                        <div class="poet-name">میرداماد</div>
+                    </a>
+                    <a href="/nouee" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/nouee.gif" alt="نوعی خبوشانی" class="poet-image">
+                        <div class="poet-name">نوعی خبوشانی</div>
+                    </a>
+                    <a href="/vaez" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/vaez.gif" alt="واعظ قزوینی" class="poet-image">
+                        <div class="poet-name">واعظ قزوینی</div>
+                    </a>
+                    <a href="/vahid" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/vahid.gif" alt="وحیدالزمان قزوینی" class="poet-image">
+                        <div class="poet-name">وحیدالزمان قزوینی</div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="century-section" data-century="12">
+                <h2 class="century-title">قرن دوازدهم</h2>
+                <div class="poets-grid">
+                    <a href="/azar" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/azar.gif" alt="آذر بیگدلی" class="poet-image">
+                        <div class="poet-name">آذر بیگدلی</div>
+                    </a>
+                    <a href="/hazin" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/hazin.gif" alt="حزین لاهیجی" class="poet-image">
+                        <div class="poet-name">حزین لاهیجی</div>
+                    </a>
+                    <a href="/rafigh" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/rafigh.gif" alt="رفیق اصفهانی" class="poet-image">
+                        <div class="poet-name">رفیق اصفهانی</div>
+                    </a>
+                    <a href="/saeeda" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/saeeda.gif" alt="سعیدا" class="poet-image">
+                        <div class="poet-name">سعیدا</div>
+                    </a>
+                    <a href="/tabib" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/tabib.gif" alt="طبیب اصفهانی" class="poet-image">
+                        <div class="poet-name">طبیب اصفهانی</div>
+                    </a>
+                    <a href="/ghassab" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ghassab.gif" alt="قصاب کاشانی" class="poet-image">
+                        <div class="poet-name">قصاب کاشانی</div>
+                    </a>
+                    <a href="/moshtagh" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/moshtagh.gif" alt="مشتاق اصفهانی" class="poet-image">
+                        <div class="poet-name">مشتاق اصفهانی</div>
+                    </a>
+                    <a href="/noorali" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/noorali.gif" alt="نورعلیشاه" class="poet-image">
+                        <div class="poet-name">نورعلیشاه</div>
+                    </a>
+                    <a href="/hatef" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/hatef.gif" alt="هاتف اصفهانی" class="poet-image">
+                        <div class="poet-name">هاتف اصفهانی</div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="century-section" data-century="13">
+                <h2 class="century-title">قرن سیزدهم</h2>
+                <div class="poets-grid">
+                    <a href="/ashofte" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ashofte.gif" alt="آشفتهٔ شیرازی" class="poet-image">
+                        <div class="poet-name">آشفتهٔ شیرازی</div>
+                    </a>
+                    <a href="/eshraghb" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/eshraghb.gif" alt="اشراق بیرجندی" class="poet-image">
+                        <div class="poet-name">اشراق بیرجندی</div>
+                    </a>
+                    <a href="/kermani" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/kermani.gif" alt="افسر کرمانی" class="poet-image">
+                        <div class="poet-name">افسر کرمانی</div>
+                    </a>
+                    <a href="/elhami" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/elhami.gif" alt="الهامی کرمانشاهی" class="poet-image">
+                        <div class="poet-name">الهامی کرمانشاهی</div>
+                    </a>
+                    <a href="/bolandeghbal" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/bolandeghbal.gif" alt="بلند اقبال" class="poet-image">
+                        <div class="poet-name">بلند اقبال</div>
+                    </a>
+                    <a href="/torki" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/torki.gif" alt="ترکی شیرازی" class="poet-image">
+                        <div class="poet-name">ترکی شیرازی</div>
+                    </a>
+                    <a href="/jeyhoon" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/jeyhoon.gif" alt="جیحون یزدی" class="poet-image">
+                        <div class="poet-name">جیحون یزدی</div>
+                    </a>
+                    <a href="/asrar" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/asrar.gif" alt="حکیم سبزواری" class="poet-image">
+                        <div class="poet-name">حکیم سبزواری</div>
+                    </a>
+                    <a href="/khaled" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/khaled.gif" alt="خالد نقشبندی" class="poet-image">
+                        <div class="poet-name">خالد نقشبندی</div>
+                    </a>
+                    <a href="/rashhe" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/rashhe.gif" alt="رشحه" class="poet-image">
+                        <div class="poet-name">رشحه</div>
+                    </a>
+                    <a href="/rhedayat" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/rhedayat.gif" alt="رضاقلی خان هدایت" class="poet-image">
+                        <div class="poet-name">رضاقلی خان هدایت</div>
+                    </a>
+                    <a href="/sahab" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/sahab.gif" alt="سحاب اصفهانی" class="poet-image">
+                        <div class="poet-name">سحاب اصفهانی</div>
+                    </a>
+                    <a href="/shater" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/shater.gif" alt="شاطر عباس صبوحی" class="poet-image">
+                        <div class="poet-name">شاطر عباس صبوحی</div>
+                    </a>
+                    <a href="/samet" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/samet.gif" alt="صامت بروجردی" class="poet-image">
+                        <div class="poet-name">صامت بروجردی</div>
+                    </a>
+                    <a href="/safa" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/safa.gif" alt="صفای اصفهانی" class="poet-image">
+                        <div class="poet-name">صفای اصفهانی</div>
+                    </a>
+                    <a href="/safayee" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/safayee.gif" alt="صفایی جندقی" class="poet-image">
+                        <div class="poet-name">صفایی جندقی</div>
+                    </a>
+                    <a href="/safi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/safi.gif" alt="صفی علیشاه" class="poet-image">
+                        <div class="poet-name">صفی علیشاه</div>
+                    </a>
+                    <a href="/omman" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/omman.gif" alt="عمان سامانی" class="poet-image">
+                        <div class="poet-name">عمان سامانی</div>
+                    </a>
+                    <a href="/ghaleb" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ghaleb.gif" alt="غالب دهلوی" class="poet-image">
+                        <div class="poet-name">غالب دهلوی</div>
+                    </a>
+                    <a href="/ghobar" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ghobar.gif" alt="غبار همدانی" class="poet-image">
+                        <div class="poet-name">غبار همدانی</div>
+                    </a>
+                    <a href="/fayez" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/fayez.gif" alt="فایز" class="poet-image">
+                        <div class="poet-name">فایز</div>
+                    </a>
+                    <a href="/forooghi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/forooghi.gif" alt="فروغی بسطامی" class="poet-image">
+                        <div class="poet-name">فروغی بسطامی</div>
+                    </a>
+                    <a href="/ghaani" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ghaani.gif" alt="قاآنی" class="poet-image">
+                        <div class="poet-name">قاآنی</div>
+                    </a>
+                    <a href="/ghaemmagham" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ghaemmagham.gif" alt="قائم مقام فراهانی" class="poet-image">
+                        <div class="poet-name">قائم مقام فراهانی</div>
+                    </a>
+                    <a href="/mohit" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/mohit.gif" alt="محیط قمی" class="poet-image">
+                        <div class="poet-name">محیط قمی</div>
+                    </a>
+                    <a href="/naraghi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/naraghi.gif" alt="ملا احمد نراقی" class="poet-image">
+                        <div class="poet-name">ملا احمد نراقی</div>
+                    </a>
+                    <a href="/aghakhan" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/aghakhan.gif" alt="میرزا آقاخان کرمانی" class="poet-image">
+                        <div class="poet-name">میرزا آقاخان کرمانی</div>
+                    </a>
+                    <a href="/habib" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/habib.gif" alt="میرزا حبیب خراسانی" class="poet-image">
+                        <div class="poet-name">میرزا حبیب خراسانی</div>
+                    </a>
+                    <a href="/neshat" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/neshat.gif" alt="نشاط اصفهانی" class="poet-image">
+                        <div class="poet-name">نشاط اصفهانی</div>
+                    </a>
+                    <a href="/nayyer" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/nayyer.gif" alt="نیر تبریزی" class="poet-image">
+                        <div class="poet-name">نیر تبریزی</div>
+                    </a>
+                    <a href="/vahdat" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/vahdat.gif" alt="وحدت کرمانشاهی" class="poet-image">
+                        <div class="poet-name">وحدت کرمانشاهی</div>
+                    </a>
+                    <a href="/shooshtari" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/shooshtari.gif" alt="وفایی شوشتری" class="poet-image">
+                        <div class="poet-name">وفایی شوشتری</div>
+                    </a>
+                    <a href="/mahabadi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/mahabadi.gif" alt="وفایی مهابادی" class="poet-image">
+                        <div class="poet-name">وفایی مهابادی</div>
+                    </a>
+                    <a href="/yaghma" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/yaghma.gif" alt="یغمای جندقی" class="poet-image">
+                        <div class="poet-name">یغمای جندقی</div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="century-section" data-century="14">
+                <h2 class="century-title">قرن چهاردهم</h2>
+                <div class="poets-grid">
+                    <a href="/ayatib" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/ayatib.gif" alt="آیتی بیرجندی" class="poet-image">
+                        <div class="poet-name">آیتی بیرجندی</div>
+                    </a>
+                    <a href="/adib" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/adib.gif" alt="ادیب الممالک" class="poet-image">
+                        <div class="poet-name">ادیب الممالک</div>
+                    </a>
+                    <a href="/afsar" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/afsar.gif" alt="افسرالملوک عاملی" class="poet-image">
+                        <div class="poet-name">افسرالملوک عاملی</div>
+                    </a>
+                    <a href="/iqbal" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/iqbal.gif" alt="اقبال لاهوری" class="poet-image">
+                        <div class="poet-name">اقبال لاهوری</div>
+                    </a>
+                    <a href="/iraj" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/iraj.gif" alt="ایرج میرزا" class="poet-image">
+                        <div class="poet-name">ایرج میرزا</div>
+                    </a>
+                    <a href="/parvin" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/parvin.gif" alt="پروین اعتصامی" class="poet-image">
+                        <div class="poet-name">پروین اعتصامی</div>
+                    </a>
+                    <a href="/hajeb" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/hajeb.gif" alt="حاجب شیرازی" class="poet-image">
+                        <div class="poet-name">حاجب شیرازی</div>
+                    </a>
+                    <a href="/khalili" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/khalili.gif" alt="خلیل&#x200C;الله خلیلی" class="poet-image">
+                        <div class="poet-name">خلیل&#x200C;الله خلیلی</div>
+                    </a>
+                    <a href="/rahi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/rahi.gif" alt="رهی معیری" class="poet-image">
+                        <div class="poet-name">رهی معیری</div>
+                    </a>
+                    <a href="/shahriar" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/shahriar.gif" alt="شهریار" class="poet-image">
+                        <div class="poet-name">شهریار</div>
+                    </a>
+                    <a href="/hamedani" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/hamedani.gif" alt="صابر همدانی" class="poet-image">
+                        <div class="poet-name">صابر همدانی</div>
+                    </a>
+                    <a href="/saghir" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/saghir.gif" alt="صغیر اصفهانی" class="poet-image">
+                        <div class="poet-name">صغیر اصفهانی</div>
+                    </a>
+                    <a href="/toghrol" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/toghrol.gif" alt="طغرل احراری" class="poet-image">
+                        <div class="poet-name">طغرل احراری</div>
+                    </a>
+                    <a href="/aref" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/aref.gif" alt="عارف قزوینی" class="poet-image">
+                        <div class="poet-name">عارف قزوینی</div>
+                    </a>
+                    <a href="/moftagher" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/moftagher.gif" alt="غروی اصفهانی" class="poet-image">
+                        <div class="poet-name">غروی اصفهانی</div>
+                    </a>
+                    <a href="/yazdi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/yazdi.gif" alt="فرخی یزدی" class="poet-image">
+                        <div class="poet-name">فرخی یزدی</div>
+                    </a>
+                    <a href="/fanoodi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/fanoodi.gif" alt="فنودی" class="poet-image">
+                        <div class="poet-name">فنودی</div>
+                    </a>
+                    <a href="/bahar" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/bahar.gif" alt="ملک&#x200C;الشعرا بهار" class="poet-image">
+                        <div class="poet-name">ملک&#x200C;الشعرا بهار</div>
+                    </a>
+                    <a href="/eshghi" class="poet-card">
+                        <img src="https://api.ganjoor.net/api/ganjoor/poet/image/eshghi.gif" alt="میرزاده عشقی" class="poet-image">
+                        <div class="poet-name">میرزاده عشقی</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="about-page" class="content-page">
+            <div class="breadcrumb">
+                <a href="#" data-page="home">خانه</a> &gt; درباره ما
+            </div>
+            
+            <div class="century-section">
+                <h2 class="century-title">درباره ادبیات فارسی</h2>
+                <p>وب‌سایت ادبیات فارسی یک منبع جامع برای علاقه‌مندان به شعر و ادبیات فارسی است. در این وب‌سایت تلاش کرده‌ایم مجموعه‌ای کامل از اشعار شاعران بزرگ فارسی‌زبان را در اختیار شما قرار دهیم.</p>
+                
+                <p>کار ما حفظ و گسترش میراث غنی ادبیات فارسی و دسترسی آسان برای همه علاقه‌مندان است. با استفاده از این وب‌سایت، می‌توانید به آثار شاعران کلاسیک و معاصر فارسی دسترسی داشته باشید.</p>
+                
+                <p>این وب‌سایت به صورت رایگان در دسترس است و تلاش می‌کند تا با ارائه محتوای باکیفیت، به ترویج فرهنگ و ادبیات فارسی کمک کند.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 ادبیات فارسی. تمامی حقوق محفوظ است.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentPages = document.querySelectorAll('.content-page');
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinksContainer = document.querySelector('.nav-links');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    contentPages.forEach(page => page.classList.remove('active'));
+                    document.getElementById(`${targetPage}-page`).classList.add('active');
+                    
+                    navLinksContainer.classList.remove('active');
+                });
+            });
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinksContainer.classList.toggle('active');
+            });
+            
+            const centuryButtons = document.querySelectorAll('.century-button');
+            const centurySections = document.querySelectorAll('.century-section');
+            
+            centuryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    centuryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const century = this.getAttribute('data-century');
+                    
+                    if (century === 'all') {
+                        centurySections.forEach(section => {
+                            section.style.display = 'block';
+                        });
+                    } else {
+                        centurySections.forEach(section => {
+                            if (section.getAttribute('data-century') === century) {
+                                section.style.display = 'block';
+                            } else {
+                                section.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+        });
+        
+        function toggleFullscreen() {
+            const iframe = document.querySelector('.iframe-container iframe');
+            const container = document.querySelector('.iframe-container');
+            
+            if (!iframe.classList.contains('fullscreen-iframe')) {
+                iframe.classList.add('fullscreen-iframe');
+                container.classList.add('fullscreen-iframe');
+                
+                const exitBtn = document.createElement('button');
+                exitBtn.className = 'fullscreen-exit-btn';
+                exitBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
+                exitBtn.onclick = toggleFullscreen;
+                document.body.appendChild(exitBtn);
+            } else {
+                iframe.classList.remove('fullscreen-iframe');
+                container.classList.remove('fullscreen-iframe');
+                
+
+                const exitBtn = document.querySelector('.fullscreen-exit-btn');
+                if (exitBtn) {
+                    exitBtn.remove();
+                }
+            }
+        }
+        
+        function startTour() {
+            alert('تور مجازی شروع شد. از دکمه‌های جهت‌نما برای حرکت استفاده کنید.');
+        }
+        
+        function pauseTour() {
+            alert('تور مجازی متوقف شد.');
+        }
+        
+        function resetTour() {
+            alert('تور مجازی به نقطه شروع بازگشت.');
+        }
+        
+        function openTour(tourName) {
+            alert(`در حال باز کردن تور مجازی ${tourName}...`);
+        }
+    </script>
+</body>
+</html>
